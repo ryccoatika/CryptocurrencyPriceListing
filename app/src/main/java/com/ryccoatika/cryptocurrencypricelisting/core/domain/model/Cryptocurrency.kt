@@ -1,5 +1,8 @@
 package com.ryccoatika.cryptocurrencypricelisting.core.domain.model
 
+import java.text.NumberFormat
+import java.util.*
+
 data class Cryptocurrency(
     val id: String,
     val symbol: String,
@@ -18,3 +21,6 @@ data class Cryptocurrency(
     val tSupply: String,
     val mSupply: String
 )
+
+val Cryptocurrency.formattedPriceUsd
+    get() = NumberFormat.getCurrencyInstance(Locale.US).format(priceUsd.toDoubleOrNull() ?: 0.0)
