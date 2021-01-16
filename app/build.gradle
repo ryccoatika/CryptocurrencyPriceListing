@@ -56,4 +56,8 @@ dependencies {
     // moshi
     implementation 'com.squareup.moshi:moshi:1.11.0'
     kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.11.0'
+
+    // coroutines flow
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
 }
