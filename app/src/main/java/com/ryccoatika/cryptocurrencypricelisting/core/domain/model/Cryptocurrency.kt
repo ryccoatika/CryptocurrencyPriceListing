@@ -22,5 +22,8 @@ data class Cryptocurrency(
     val mSupply: String
 )
 
+val Cryptocurrency.imageUrl
+    get() = "https://www.coinlore.com/img/$nameId.png"
+
 val Cryptocurrency.formattedPriceUsd
     get() = NumberFormat.getCurrencyInstance(Locale.US).format(priceUsd.toDoubleOrNull() ?: 0.0)
