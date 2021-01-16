@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CryptocurrencyPriceListing</string>
+    <string name="cryptocurrencies">Cryptocurrencies</string>
+    <string name="name">Name</string>
+    <string name="symbol">Symbol</string>
+    <string name="price_us">Price (US$)</string>
 </resources>
