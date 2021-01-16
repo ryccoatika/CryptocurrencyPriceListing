@@ -61,6 +61,12 @@ dependencies {
     // coroutines flow
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
+
+    // koin
+    implementation 'org.koin:koin-core:2.1.6'
+    implementation 'org.koin:koin-android:2.1.6'
+    implementation 'org.koin:koin-android-scope:2.1.6'
+
     // picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
 }
