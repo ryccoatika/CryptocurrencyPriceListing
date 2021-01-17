@@ -79,6 +79,10 @@ class MainActivity : AppCompatActivity(), MainContract.MainView {
     override fun onRefreshSuccess(results: List<CryptocurrencyData>) {
         adapter.addCryptocurrencies(results)
     }
+
+    override fun onRefreshEmpty() {
+        adapter.showEmpty()
+    }
         relativeLayout?.showSnackBar(getString(R.string.load_data_error))
     }
 
