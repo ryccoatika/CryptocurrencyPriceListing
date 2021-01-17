@@ -13,6 +13,9 @@ interface MainContract {
     }
 
     interface IMainPresenter {
+        var start: Int
+        var end: Int
+        var inProgress: Boolean
         fun onRefresh()
         fun onLoadNext()
         fun onDestroy()
