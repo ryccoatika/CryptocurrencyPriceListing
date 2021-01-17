@@ -33,7 +33,8 @@ class CryptocurrencyAdapter : RecyclerView.Adapter<CryptocurrencyAdapter.Cryptoc
         private val symbol = view.findViewById<TextView>(R.id.symbol)
         private val price = view.findViewById<TextView>(R.id.price)
 
-        fun bind(cryptocurrency: Cryptocurrency) {
+        fun bind(cryptocurrency: CryptocurrencyData?) {
+            if (cryptocurrency == null) return
             image.loadUrl(cryptocurrency.imageUrl)
             name.text = cryptocurrency.name
             symbol.text = cryptocurrency.symbol
