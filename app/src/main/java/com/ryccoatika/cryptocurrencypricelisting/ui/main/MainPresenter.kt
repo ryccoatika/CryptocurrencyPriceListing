@@ -16,8 +16,10 @@ class MainPresenter(
 ): MainContract.IMainPresenter, CoroutineScope {
 
     // for pagination
-    private var start = 0
+    override var start = 0
+    override var end = 0
     private var limit = 10
+    override var inProgress = true
 
     private var job = Job()
 
