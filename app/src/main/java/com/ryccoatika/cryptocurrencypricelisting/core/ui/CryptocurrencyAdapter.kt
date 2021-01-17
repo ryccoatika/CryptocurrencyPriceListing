@@ -95,3 +95,4 @@ class CryptocurrencyAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         object Error: UIModel<Nothing>()
         data class Data<out T>(val data: T): UIModel<T>()
     }
+}
