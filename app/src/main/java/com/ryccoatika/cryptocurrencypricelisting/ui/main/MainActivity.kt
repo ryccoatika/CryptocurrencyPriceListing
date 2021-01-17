@@ -97,8 +97,8 @@ class MainActivity : AppCompatActivity(), MainContract.MainView {
         adapter.hideLoading()
     }
 
-    override fun onEmpty() {
-        Log.d("190401", "onEmpty")
+    override fun onLoadNextSuccess(results: List<CryptocurrencyData>) {
+        adapter.addCryptocurrencies(results)
     }
 
     override fun onLoadNextError(message: String) {
