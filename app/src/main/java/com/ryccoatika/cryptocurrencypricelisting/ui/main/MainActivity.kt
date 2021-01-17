@@ -76,8 +76,9 @@ class MainActivity : AppCompatActivity(), MainContract.MainView {
         adapter.hideLoading()
     }
 
-    override fun onHideLoading() {
-        swipeRefresh?.isRefreshing = false
+    override fun onRefreshSuccess(results: List<CryptocurrencyData>) {
+        adapter.addCryptocurrencies(results)
+    }
         relativeLayout?.showSnackBar(getString(R.string.load_data_error))
     }
 
