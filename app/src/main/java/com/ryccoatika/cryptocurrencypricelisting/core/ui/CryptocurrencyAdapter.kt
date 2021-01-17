@@ -68,6 +68,17 @@ class CryptocurrencyAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun getItemCount(): Int = cryptocurrencies.count()
+
+    fun showLoading() {
+        cryptocurrencies.addAll(List(10) {UIModel.Loading})
+        notifyDataSetChanged()
+    }
+
+    fun hideLoading() {
+        cryptocurrencies.removeAll { it is UIModel.Loading }
+        notifyDataSetChanged()
+    }
+
     sealed class UIModel<out T>{
         object Loading: UIModel<Nothing>()
         object Empty: UIModel<Nothing>()
