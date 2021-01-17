@@ -40,18 +40,18 @@ class MainActivity : AppCompatActivity(), MainContract.MainView {
 
         // setting up recyclerview
         cryptocurrencyRv?.adapter = adapter
+        // add scroll listener
         cryptocurrencyRv?.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
 
-                val visibleItemCount = recyclerView.layoutManager?.childCount ?: 0
-                val totalItemCount = recyclerView.layoutManager?.itemCount ?: 0
-                val firstVisibleItemPos = (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+                val totalItemCount = recyclerView.layoutManager?.itemCount ?: return
+                val lastVisibleItemPos = (recyclerView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
 
-                if (swipeRefresh?.isRefreshing == true) return
+                if (mainPresenter.inProgress || mainPresenter.start >= mainPresenter.end) return
 
-                if (firstVisibleItemPos + visibleItemCount >= totalItemCount)
-                    mainPresenter.onLoadNext()
+                if (lastVisibleItemPos + 1 == totalItemCount)
+                    mainPresenter.onLoadNext() // loadnext will called when recyclerview scrolled into bottom
             }
         })
     }
