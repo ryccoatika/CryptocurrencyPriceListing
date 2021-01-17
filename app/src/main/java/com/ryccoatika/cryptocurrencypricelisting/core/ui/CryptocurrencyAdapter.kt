@@ -42,10 +42,7 @@ class CryptocurrencyAdapter : RecyclerView.Adapter<CryptocurrencyAdapter.Cryptoc
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CryptocurrencyViewHolder =
-        CryptocurrencyViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.cryptocurrency_list_item, parent, false)
-        )
+    class NothingViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
     override fun onBindViewHolder(holder: CryptocurrencyViewHolder, position: Int) {
         holder.bind(cryptocurrencies[position])
