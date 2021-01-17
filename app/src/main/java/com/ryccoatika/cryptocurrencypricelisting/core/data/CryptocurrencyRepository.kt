@@ -15,9 +15,9 @@ class CryptocurrencyRepository(
         flow {
             emit(Resource.InProgress)
             when(val response = cryptocurrencyDataSource.getAllCoins(start, limit)) {
-                is ApiResponse.Success -> emit(Resource.Success(response.data.data.map { it.toCryptocurrencyDomain() }))
+                is ApiResponse.Success -> emit(Resource.Success(response.data.toCryptocurrencyDomain()))
                 is ApiResponse.Error -> emit(Resource.Error(response.message))
-                ApiResponse.Empty -> emit(Resource.Empty)
+                is ApiResponse.Empty -> emit(Resource.Empty)
             }
         }
 }
