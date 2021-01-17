@@ -33,7 +33,10 @@ class MainActivity : AppCompatActivity(), MainContract.MainView {
         swipeRefresh = findViewById(R.id.swipe_refresh)
         cryptocurrencyRv = findViewById(R.id.cryptocurrency_rv)
 
-        swipeRefresh?.setOnRefreshListener { mainPresenter.onRefresh() }
+        swipeRefresh?.setOnRefreshListener {
+            mainPresenter.onRefresh()
+            swipeRefresh?.isRefreshing = false // hide swipe refreshing indicator immediately after doing swipe
+        }
 
         // setting up recyclerview
         cryptocurrencyRv?.adapter = adapter
