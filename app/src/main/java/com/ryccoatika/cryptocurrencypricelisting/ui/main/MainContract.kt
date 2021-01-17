@@ -1,15 +1,19 @@
 package com.ryccoatika.cryptocurrencypricelisting.ui.main
 
-import com.ryccoatika.cryptocurrencypricelisting.core.domain.model.Cryptocurrency
+import com.ryccoatika.cryptocurrencypricelisting.core.domain.model.Cryptocurrency.*
 
 interface MainContract {
     interface MainView {
-        fun onRefresh()
-        fun onShowLoading()
-        fun onHideLoading()
-        fun onSuccess(results: List<Cryptocurrency>)
-        fun onEmpty()
-        fun onError(message: String)
+        fun onRefreshLoading()
+        fun onRefreshStopLoading()
+        fun onRefreshEmpty()
+        fun onRefreshSuccess(results: List<CryptocurrencyData>)
+        fun onRefreshError(message: String)
+
+        fun onLoadNextLoading()
+        fun onLoadNextStopLoading()
+        fun onLoadNextSuccess(results: List<CryptocurrencyData>)
+        fun onLoadNextError(message: String)
     }
 
     interface IMainPresenter {
