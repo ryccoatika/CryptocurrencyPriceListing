@@ -27,30 +27,42 @@ class MainPresenter(
         get() = uiContext + job
 
     override fun onRefresh() {
+        end = 0
         start = 0
-        mainView.onRefresh()
-        loadData()
-    }
-
-    override fun onLoadNext() {
-        start += limit
-        loadData()
-    }
-
-    private fun loadData() {
+        inProgress = true
         launch {
             cryptocurrencyInteractor.getAllCoins(start, limit).collect { cryptocurrencies ->
                 when(cryptocurrencies) {
-                    is Resource.Success -> mainView.onSuccess(cryptocurrencies.data.sortedBy { it.rank })
-                    is Resource.Error -> {
-                        mainView.onError(cryptocurrencies.message)
-                        if (start >= 0) start -= limit
+                    is Resource.Success -> {
+                        end = cryptocurrencies.data.info.coinsNum
+                        mainView.onRefreshSuccess(cryptocurrencies.data.data)
+                        start += limit
                     }
-                    is Resource.Empty -> mainView.onEmpty()
-                    is Resource.InProgress -> mainView.onShowLoading()
+                    is Resource.Error -> mainView.onRefreshError(cryptocurrencies.message)
+                    is Resource.Empty -> mainView.onRefreshEmpty()
+                    is Resource.InProgress -> mainView.onRefreshLoading()
                 }
             }
-            mainView.onHideLoading()
+            mainView.onRefreshStopLoading()
+            inProgress = false
+        }
+    }
+
+    override fun onLoadNext() {
+        inProgress = true
+        launch {
+            cryptocurrencyInteractor.getAllCoins(start, limit).collect { cryptocurrencies ->
+                when {
+                    cryptocurrencies is Resource.Success -> {
+                        mainView.onLoadNextSuccess(cryptocurrencies.data.data)
+                        start += limit
+                    }
+                    cryptocurrencies is Resource.Error -> mainView.onLoadNextError(cryptocurrencies.message)
+                    cryptocurrencies is Resource.InProgress -> mainView.onLoadNextLoading()
+                }
+            }
+            mainView.onLoadNextStopLoading()
+            inProgress = false
         }
     }
 
