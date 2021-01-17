@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity(), MainContract.MainView {
         Log.d("190401", "onEmpty")
     }
 
-    override fun onError(message: String) {
+    override fun onLoadNextError(message: String) {
         relativeLayout?.showSnackBar(getString(R.string.load_data_error))
     }
 }
