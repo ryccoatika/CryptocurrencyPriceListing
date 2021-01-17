@@ -51,4 +51,9 @@ class CryptocurrencyAdapter : RecyclerView.Adapter<CryptocurrencyAdapter.Cryptoc
     }
 
     override fun getItemCount(): Int = cryptocurrencies.count()
-}
+    sealed class UIModel<out T>{
+        object Loading: UIModel<Nothing>()
+        object Empty: UIModel<Nothing>()
+        object Error: UIModel<Nothing>()
+        data class Data<out T>(val data: T): UIModel<T>()
+    }
