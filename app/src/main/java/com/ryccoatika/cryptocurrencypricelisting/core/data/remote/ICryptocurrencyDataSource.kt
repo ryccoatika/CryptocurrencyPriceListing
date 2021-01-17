@@ -1,7 +1,7 @@
 package com.ryccoatika.cryptocurrencypricelisting.core.data.remote
 
-import com.ryccoatika.cryptocurrencypricelisting.core.data.remote.response.GetCryptocurrencyResponse
+import com.ryccoatika.cryptocurrencypricelisting.core.data.remote.response.CryptocurrencyResponse
 
 interface ICryptocurrencyDataSource {
-    suspend fun getAllCoins(start: Int, limit: Int): ApiResponse<GetCryptocurrencyResponse>
+    suspend fun getAllCoins(start: Int, limit: Int): ApiResponse<CryptocurrencyResponse>
 }
