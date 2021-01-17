@@ -12,7 +12,7 @@ import com.ryccoatika.cryptocurrencypricelisting.core.domain.model.formattedPric
 import com.ryccoatika.cryptocurrencypricelisting.core.domain.model.imageUrl
 import com.ryccoatika.cryptocurrencypricelisting.ui.utils.loadUrl
 
-class CryptocurrencyAdapter : RecyclerView.Adapter<CryptocurrencyAdapter.CryptocurrencyViewHolder>() {
+class CryptocurrencyAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val cryptocurrencies = ArrayList<UIModel<CryptocurrencyData>>()
 
@@ -44,8 +44,27 @@ class CryptocurrencyAdapter : RecyclerView.Adapter<CryptocurrencyAdapter.Cryptoc
 
     class NothingViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
-    override fun onBindViewHolder(holder: CryptocurrencyViewHolder, position: Int) {
-        holder.bind(cryptocurrencies[position])
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
+        return when (viewType) {
+            R.layout.cryptocurrency_list_item -> CryptocurrencyViewHolder(view)
+            else -> NothingViewHolder(view)
+        }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return when(cryptocurrencies[position]) {
+            is UIModel.Loading -> R.layout.loading_list_item
+            is UIModel.Empty -> R.layout.empty_list_item
+            is UIModel.Error -> R.layout.error_list_item
+            is UIModel.Data -> R.layout.cryptocurrency_list_item
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is CryptocurrencyViewHolder) {
+            holder.bind((cryptocurrencies[position] as UIModel.Data).data)
+        }
     }
 
     override fun getItemCount(): Int = cryptocurrencies.count()
