@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ryccoatika.cryptocurrencypricelisting.R
-import com.ryccoatika.cryptocurrencypricelisting.core.domain.model.Cryptocurrency
+import com.ryccoatika.cryptocurrencypricelisting.core.domain.model.Cryptocurrency.*
 import com.ryccoatika.cryptocurrencypricelisting.core.domain.model.formattedPriceUsd
 import com.ryccoatika.cryptocurrencypricelisting.core.domain.model.imageUrl
 import com.ryccoatika.cryptocurrencypricelisting.ui.utils.loadUrl
