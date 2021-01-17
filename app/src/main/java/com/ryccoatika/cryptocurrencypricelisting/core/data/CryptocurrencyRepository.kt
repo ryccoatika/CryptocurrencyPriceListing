@@ -2,14 +2,14 @@ package com.ryccoatika.cryptocurrencypricelisting.core.data
 
 import com.ryccoatika.cryptocurrencypricelisting.core.data.mappers.toCryptocurrencyDomain
 import com.ryccoatika.cryptocurrencypricelisting.core.data.remote.ApiResponse
-import com.ryccoatika.cryptocurrencypricelisting.core.data.remote.CryptocurrencyDataSource
+import com.ryccoatika.cryptocurrencypricelisting.core.data.remote.ICryptocurrencyDataSource
 import com.ryccoatika.cryptocurrencypricelisting.core.domain.model.Cryptocurrency
 import com.ryccoatika.cryptocurrencypricelisting.core.domain.repository.ICryptocurrencyRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class CryptocurrencyRepository(
-    private val cryptocurrencyDataSource: CryptocurrencyDataSource
+    private val cryptocurrencyDataSource: ICryptocurrencyDataSource
 ) : ICryptocurrencyRepository {
     override fun getAllCoins(start: Int, limit: Int): Flow<Resource<Cryptocurrency>> =
         flow {
