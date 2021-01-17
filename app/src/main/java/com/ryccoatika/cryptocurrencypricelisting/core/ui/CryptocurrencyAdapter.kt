@@ -79,6 +79,11 @@ class CryptocurrencyAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         notifyDataSetChanged()
     }
 
+    fun showEmpty() {
+        cryptocurrencies.add(UIModel.Empty)
+        notifyDataSetChanged()
+    }
+
     fun hideLoading() {
         cryptocurrencies.removeAll { it is UIModel.Loading }
         notifyDataSetChanged()
