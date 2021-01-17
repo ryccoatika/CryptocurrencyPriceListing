@@ -71,8 +71,8 @@ class MainActivity : AppCompatActivity(), MainContract.MainView {
         adapter.showLoading()
     }
 
-    override fun onShowLoading() {
-        swipeRefresh?.isRefreshing = true
+    override fun onRefreshStopLoading() {
+        adapter.hideLoading()
     }
 
     override fun onHideLoading() {
