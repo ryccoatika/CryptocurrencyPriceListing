@@ -92,6 +92,9 @@ class MainActivity : AppCompatActivity(), MainContract.MainView {
     override fun onLoadNextLoading() {
         adapter.showLoading()
     }
+
+    override fun onLoadNextStopLoading() {
+        adapter.hideLoading()
     }
 
     override fun onEmpty() {
