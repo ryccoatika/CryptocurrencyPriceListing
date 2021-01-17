@@ -14,10 +14,10 @@ import com.ryccoatika.cryptocurrencypricelisting.ui.utils.loadUrl
 
 class CryptocurrencyAdapter : RecyclerView.Adapter<CryptocurrencyAdapter.CryptocurrencyViewHolder>() {
 
-    private val cryptocurrencies = ArrayList<Cryptocurrency>()
+    private val cryptocurrencies = ArrayList<UIModel<CryptocurrencyData>>()
 
-    fun addCryptocurrencies(cryptocurrencies: List<Cryptocurrency>) {
-        this.cryptocurrencies.addAll(cryptocurrencies)
+    fun addCryptocurrencies(cryptocurrencies: List<CryptocurrencyData>) {
+        this.cryptocurrencies.addAll(cryptocurrencies.map { UIModel.Data(it) })
         notifyDataSetChanged()
     }
 
