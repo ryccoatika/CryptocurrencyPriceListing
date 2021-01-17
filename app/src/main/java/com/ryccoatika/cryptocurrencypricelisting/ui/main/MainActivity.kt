@@ -66,8 +66,9 @@ class MainActivity : AppCompatActivity(), MainContract.MainView {
         mainPresenter.onDestroy()
     }
 
-    override fun onRefresh() {
+    override fun onRefreshLoading() {
         adapter.clearCryptocurrencies()
+        adapter.showLoading()
     }
 
     override fun onShowLoading() {
