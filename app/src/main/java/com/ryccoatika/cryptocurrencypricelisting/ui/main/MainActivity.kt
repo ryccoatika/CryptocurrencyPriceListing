@@ -1,7 +1,7 @@
 package com.ryccoatika.cryptocurrencypricelisting.ui.main
 
 import android.os.Bundle
-import android.util.Log
+import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity(), MainContract.MainView {
     private val adapter: CryptocurrencyAdapter by lazy { CryptocurrencyAdapter() }
 
     // ui
+    private var relativeLayout: RelativeLayout? = null
     private var swipeRefresh: SwipeRefreshLayout? = null
     private var cryptocurrencyRv: RecyclerView? = null
 
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity(), MainContract.MainView {
 
         mainPresenter = MainPresenter(this, cryptocurrencyInteractor)
 
+        relativeLayout = findViewById(R.id.relative_layout)
         swipeRefresh = findViewById(R.id.swipe_refresh)
         cryptocurrencyRv = findViewById(R.id.cryptocurrency_rv)
 
@@ -71,6 +73,7 @@ class MainActivity : AppCompatActivity(), MainContract.MainView {
 
     override fun onHideLoading() {
         swipeRefresh?.isRefreshing = false
+        relativeLayout?.showSnackBar(getString(R.string.load_data_error))
     }
 
     override fun onSuccess(results: List<Cryptocurrency>) {
@@ -83,6 +86,6 @@ class MainActivity : AppCompatActivity(), MainContract.MainView {
     }
 
     override fun onError(message: String) {
-        Log.d("190401", "onError\nmessage: $message")
+        relativeLayout?.showSnackBar(getString(R.string.load_data_error))
     }
 }
