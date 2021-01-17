@@ -5,5 +5,5 @@ import com.ryccoatika.cryptocurrencypricelisting.core.domain.model.Cryptocurrenc
 import kotlinx.coroutines.flow.Flow
 
 interface ICryptocurrencyRepository {
-    fun getAllCoins(start: Int, limit: Int): Flow<Resource<List<Cryptocurrency>>>
+    fun getAllCoins(start: Int, limit: Int): Flow<Resource<Cryptocurrency>>
 }

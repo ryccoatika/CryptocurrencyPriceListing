@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.flow
 class CryptocurrencyRepository(
     private val cryptocurrencyDataSource: CryptocurrencyDataSource
 ) : ICryptocurrencyRepository {
-    override fun getAllCoins(start: Int, limit: Int): Flow<Resource<List<Cryptocurrency>>> =
+    override fun getAllCoins(start: Int, limit: Int): Flow<Resource<Cryptocurrency>> =
         flow {
             emit(Resource.InProgress)
             when(val response = cryptocurrencyDataSource.getAllCoins(start, limit)) {

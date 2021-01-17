@@ -8,6 +8,6 @@ import kotlinx.coroutines.flow.Flow
 class CryptocurrencyInteractor(
     private val cryptocurrencyRepository: ICryptocurrencyRepository
 ) : CryptocurrencyUseCase {
-    override fun getAllCoins(start: Int, limit: Int): Flow<Resource<List<Cryptocurrency>>> =
+    override fun getAllCoins(start: Int, limit: Int): Flow<Resource<Cryptocurrency>> =
         cryptocurrencyRepository.getAllCoins(start, limit)
 }
