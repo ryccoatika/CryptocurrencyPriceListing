@@ -10,6 +10,7 @@ import com.ryccoatika.cryptocurrencypricelisting.R
 import com.ryccoatika.cryptocurrencypricelisting.core.domain.model.Cryptocurrency
 import com.ryccoatika.cryptocurrencypricelisting.core.domain.usecase.CryptocurrencyUseCase
 import com.ryccoatika.cryptocurrencypricelisting.core.ui.CryptocurrencyAdapter
+import com.ryccoatika.cryptocurrencypricelisting.ui.utils.showSnackBar
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity(), MainContract.MainView {
