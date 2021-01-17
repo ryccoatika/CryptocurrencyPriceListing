@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.ryccoatika.cryptocurrencypricelisting.R
-import com.ryccoatika.cryptocurrencypricelisting.core.domain.model.Cryptocurrency
+import com.ryccoatika.cryptocurrencypricelisting.core.domain.model.Cryptocurrency.*
 import com.ryccoatika.cryptocurrencypricelisting.core.domain.usecase.CryptocurrencyUseCase
 import com.ryccoatika.cryptocurrencypricelisting.core.ui.CryptocurrencyAdapter
 import com.ryccoatika.cryptocurrencypricelisting.ui.utils.showSnackBar
