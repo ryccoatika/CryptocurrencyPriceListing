@@ -83,6 +83,9 @@ class MainActivity : AppCompatActivity(), MainContract.MainView {
     override fun onRefreshEmpty() {
         adapter.showEmpty()
     }
+
+    override fun onRefreshError(message: String) {
+        adapter.showError()
         relativeLayout?.showSnackBar(getString(R.string.load_data_error))
     }
 
