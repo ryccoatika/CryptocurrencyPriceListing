@@ -2,6 +2,7 @@ package com.ryccoatika.cryptocurrencypricelisting.core.di
 
 import com.ryccoatika.cryptocurrencypricelisting.core.data.CryptocurrencyRepository
 import com.ryccoatika.cryptocurrencypricelisting.core.data.remote.CryptocurrencyDataSource
+import com.ryccoatika.cryptocurrencypricelisting.core.data.remote.ICryptocurrencyDataSource
 import com.ryccoatika.cryptocurrencypricelisting.core.data.remote.retrofit.CryptocurrencyService
 import com.ryccoatika.cryptocurrencypricelisting.core.domain.repository.ICryptocurrencyRepository
 import com.squareup.moshi.Moshi
@@ -24,6 +25,6 @@ val networkModule = module {
 }
 
 val repositoryModule = module {
-    single { CryptocurrencyDataSource(get()) }
+    single<ICryptocurrencyDataSource> { CryptocurrencyDataSource(get()) }
     single<ICryptocurrencyRepository> { CryptocurrencyRepository(get()) }
 }
