@@ -11,7 +11,7 @@ This app was made for [codementor project practice](https://www.codementor.io/pr
 # Download
 [Firebase Distribution](https://appdistribution.firebase.dev/i/f4ca28afaf9d8bfe)
 
-# Libraries
+# Libraries and Stuffs
 
 * Retrofit (for consuming API)
 * Moshi (JSON Parser)
@@ -20,6 +20,9 @@ This app was made for [codementor project practice](https://www.codementor.io/pr
 * Picasso (Image Downloading)
 * Shimmer (Shimmer effect for view)
 * Lottie (For animation)
+
+* MVP (Model View Presenter)
+* Clean Architecture
 
 # Build
 
